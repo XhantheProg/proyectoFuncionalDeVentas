@@ -21,4 +21,23 @@ public class DireccionDAO {
         }
     }
 
+    public static void actualizarDireccion(Libreria lib) {
+        Conexion db_connect = new Conexion();
+        try (Connection conexion = db_connect.get_conConnection()) {
+            PreparedStatement ps = null;
+            try {
+                String query = "UPDATE venta SET direccion = ? WHERE id = ?";
+                ps = conexion.prepareStatement(query);
+                ps.setString(1, lib.getDireccion());
+                ps.setInt(2, lib.getId());
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+
 }
