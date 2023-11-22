@@ -43,7 +43,7 @@ public class Main {
                     menuLibros(libroService, scanner);
                     break;
                 case 6:
-                    System.out.println("Saliendo del programa...");
+                    System.out.println("Saliendo del programa....");
                     break;
                 default:
                     System.out.println("Opción no válida. Intente de nuevo.");
