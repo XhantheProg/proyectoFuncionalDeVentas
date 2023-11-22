@@ -30,9 +30,9 @@ public class MostrarLibroDAO {
 
             while (rs.next()) {
                 int id = rs.getInt("id");
-                String nombre = rs.getString("nombre");
-                String categoria = rs.getString("categoria");
-                String autor = rs.getString("autor");
+                String nombre = rs.getString("NombreDelLibro");
+                String categoria = rs.getString("Categoria");
+                String autor = rs.getString("Autor");
 
                 Libreria.Libro libro = new Libreria.Libro(id, nombre, categoria, autor);
 
@@ -99,4 +99,20 @@ public class MostrarLibroDAO {
 
         return libro;
     }
+
+    public boolean existeLibro(int idLibro) {
+        Conexion conexion = new Conexion();
+        try (Connection connection = conexion.get_conConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT id FROM libro WHERE id = ?")) {
+            statement.setInt(1, idLibro);
+            return statement.executeQuery().next();
+        } catch (SQLException e) {
+            System.out.println("Error al verificar si existe el libro: " + e.getMessage());
+            return false;
+        }
+    }
+
+
+
+
 }

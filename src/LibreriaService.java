@@ -43,10 +43,10 @@ public class LibreriaService {
                 case 2:
                     libroService.editarLibro();
                     break;
-                /*case 3:
+                case 3:
                     libroService.mostrarLibros();
                     break;
-                case 4:
+                /*case 4:
                     libroService.borrarLibro();
                     break;
                 case 5:

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -82,4 +83,59 @@ public class LibroService {
     private void actualizarLibroEnBaseDeDatos(Libreria.Libro libroActualizado) {
         EditarLibroDAO.editarLibroEnBaseDeDatos(libroActualizado);
     }
-}
+
+
+
+
+        public void mostrarLibros() {
+            MostrarLibroDAO mostrarLibroDAO = new MostrarLibroDAO();
+            List<Libreria.Libro> libros = mostrarLibroDAO.obtenerTodosLosLibros();
+
+            if (libros.isEmpty()) {
+                System.out.println("No hay libros disponibles.");
+            } else {
+                System.out.println("--- Listado de Libros ---");
+                for (Libreria.Libro libro : libros) {
+                    System.out.println("ID: " + libro.getId());
+                    System.out.println("Nombre: " + libro.getNombreLibro());
+                    System.out.println("Categoría: " + libro.getCategoria());
+                    System.out.println("Autor: " + libro.getAutor());
+                    System.out.println("------------------------");
+                }
+            }
+        }
+
+
+    public void borrarLibro() {
+        Scanner scanner = new Scanner(System.in);
+        MostrarLibroDAO mostrarLibroDAO = new MostrarLibroDAO();
+
+        System.out.println("--- Menú de Borrado de Libros ---");
+        System.out.println("1. Borrar un libro por ID");
+        System.out.println("2. Borrar todos los libros");
+        System.out.print("Elija una opción: ");
+        int opcion = scanner.nextInt();
+
+        switch (opcion) {
+            case 1:
+                System.out.print("Ingrese el ID del libro a borrar: ");
+                int idLibro = scanner.nextInt();
+                scanner.nextLine(); // Limpiar el buffer del scanner
+
+                if (mostrarLibroDAO.existeLibro(idLibro)) {
+                    BorrarLibroDAO.borrarLibroPorID(idLibro);
+                    System.out.println("El libro con ID " + idLibro + " ha sido eliminado.");
+                } else {
+                    System.out.println("No se encontró ningún libro con el ID proporcionado.");
+                }
+                break;
+            case 2:
+                BorrarLibroDAO.borrarTodosLosLibros();
+                System.out.println("Todos los libros han sido eliminados.");
+                break;
+            default:
+                System.out.println("Opción no válida.");
+                break;
+        }
+    }
+    }
