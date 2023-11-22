@@ -1,3 +1,4 @@
+
 public class Libreria {
     private int id;
     private String nombreLibreria;
@@ -88,7 +89,6 @@ public class Libreria {
         private String apellido;
         private String cargo;
 
-        // Constructor
         public Empleado(String nombre, String apellido, String cargo) {
             this.nombre = nombre;
             this.apellido = apellido;
@@ -120,4 +120,13 @@ public class Libreria {
             this.cargo = cargo;
         }
     }
+
 }
+
+
+
+        // Getters y setters
+
+
+
+
