@@ -95,7 +95,7 @@ public class Main {
             System.out.println("\n--- Menú de Empleados ---");
             System.out.println("1. Añadir Empleado");
             System.out.println("2. Mostrar Empleado");
-            System.out.println("3. Editar Empleado");
+            System.out.println("3. Buscar Empleado");
             System.out.println("4. Borrar Empleado");
             System.out.println("5. Volver al Menú Principal");
             System.out.print("Elija una opción: ");
@@ -107,13 +107,13 @@ public class Main {
                     empleadoService.agregarEmpleado(); // Llama al método para agregar un empleado
                     break;
                 case 2:
-                    // Lógica para mostrar empleados
+                    empleadoService.mostrarEmpleados();
                     break;
                 case 3:
-                    // Lógica para editar empleado
+                    empleadoService.editarEmpleado();
                     break;
                 case 4:
-                    // Lógica para borrar empleado
+                    empleadoService.borrarEmpleado();
                     break;
                 case 5:
                     System.out.println("Volviendo al Menú Principal...");
